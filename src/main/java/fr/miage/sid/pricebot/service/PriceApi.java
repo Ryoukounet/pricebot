@@ -19,6 +19,10 @@ import java.net.URLConnection;
 public class PriceApi {
     String token = "ISSRRDXJQFOQLDBPUJZPCTGICEECASJIJACLCYUPLCGHPLVWXQCYTUJQMXHFHXQF";
 
+    @Autowired
+    public PriceApi(){
+
+    }
 
     public JSONObject getPrice(String valeur) throws Exception {
         //String result = getHTML("https://api.priceapi.com/products/bulk/5a579df1ad19f50d33f9a42c?token=ISSRRDXJQFOQLDBPUJZPCTGICEECASJIJACLCYUPLCGHPLVWXQCYTUJQMXHFHXQF");

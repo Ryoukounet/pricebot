@@ -1,5 +1,8 @@
 package fr.miage.sid.pricebot.application;
 
+import fr.miage.sid.pricebot.service.PriceApi;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @ComponentScan
 @SpringBootApplication
+@ComponentScan(basePackages="fr.miage.sid.pricebot")
 public class PricebotApplication  extends SpringBootServletInitializer  {
 
 	public static void main(String[] args) {
@@ -26,14 +30,7 @@ public class PricebotApplication  extends SpringBootServletInitializer  {
 
 	private static Class<PricebotApplication> applicationClass = PricebotApplication.class;
 }
-@RestController
-class hellocontroller{
-	@RequestMapping("/hello/{name}")
-	public String hello(@PathVariable String name) {
-		// System.out.println("cooooo");
-		return name;
-	}
-}
+
 
 
 

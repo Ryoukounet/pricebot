@@ -15,21 +15,25 @@ import java.util.Optional;
 @RestController
 public class PriceController {
 
+
     @Autowired
     private PriceApi priceApi;
 
 
 
-    @RequestMapping(value = "/price/{product}")
-    public JSONObject getBook(@PathVariable("product") String productName) {
+    @RequestMapping(value = "/price/{product}",produces =  MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getBook(@PathVariable("product") String productName) {
         JSONObject result = null;
-        System.out.println("shit");
+
         try {
             result = priceApi.getPrice(productName);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        if(result != null)
+            return new ResponseEntity(result.toString(),HttpStatus.OK);
+        else
+            return  new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
 
