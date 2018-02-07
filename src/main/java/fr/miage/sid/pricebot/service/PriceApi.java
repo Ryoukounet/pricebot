@@ -1,5 +1,6 @@
 package fr.miage.sid.pricebot.service;
 
+import com.fasterxml.jackson.core.io.UTF8Writer;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 
 @Component
 public class PriceApi {
@@ -102,12 +104,11 @@ public class PriceApi {
         conn.setDoOutput(true);
 
         OutputStreamWriter writer = new OutputStreamWriter(
-                conn.getOutputStream());
+                conn.getOutputStream(), StandardCharsets.UTF_8);
         writer.write(query);
         writer.flush();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(
-                conn.getInputStream()));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(),StandardCharsets.UTF_8));
 
         String inputLine;
         while ((inputLine = reader.readLine()) != null) {

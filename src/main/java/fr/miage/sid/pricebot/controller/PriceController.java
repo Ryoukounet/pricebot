@@ -21,7 +21,7 @@ public class PriceController {
 
 
     @RequestMapping(value = "/price/{product}",produces =  MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getBook(@PathVariable("product") String productName) {
+    public ResponseEntity getProduct(@PathVariable("product") String productName) {
         JSONObject result = null;
 
         try {
